@@ -91,18 +91,20 @@ def main():
                 f"Translation to {target_language}": [translation],
                 f"Key Vocabulary in {target_language} (with JLPT levels and examples)": [vocabulary]
             }
-            df = pd.DataFrame(data)
-
+            
+            with pd.ExcelWriter("kanbun_data.xlsx", engine="openpyxl") as writer:
+            df.to_excel(writer, index=False)
+            
             # Display DataFrame
             st.subheader("📊 Poem Details in Table Format:")
             st.dataframe(df)
 
             # Download buttons for CSV and Excel
             st.download_button(
-                label="📏 Download as CSV",
-                data=df.to_csv(index=False).encode('utf-8'),
-                file_name="kanbun_data.csv",
-                mime="text/csv"
+                label="📄 Download as Excel",
+                data=open("kanbun_data.xlsx", "rb").read(),  # อ่านไฟล์ที่เพิ่งสร้าง
+                file_name="kanbun_data.xlsx",
+                mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
             )
 
             st.download_button(
