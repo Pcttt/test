@@ -17,7 +17,8 @@ def generate_kanbun(prompt):
             {"role": "user", "content": prompt}
         ]
     )
-    kanbun = completion['choices'][0]['text'].strip()  # Adjust key paths to match Groq response structure
+    kanbun = completion.choices[0].message.content.strip()
+  # Adjust key paths to match Groq response structure
     return kanbun
 
 # Function to translate Kanbun to a selected language
