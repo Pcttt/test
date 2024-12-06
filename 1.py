@@ -12,7 +12,7 @@ if groq_api_key:
 def generate_kanbun(prompt):
     completion = client.chat.completions.create(
         model="llama3-70b-8192",  # Adjust model name if necessary
-       messages=[
+        messages=[
             {"role": "system", "content": "You are a skilled Kanbun (classical Chinese) poet."},
             {"role": "user", "content": prompt}
         ]
