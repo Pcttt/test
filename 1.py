@@ -12,35 +12,36 @@ if groq_api_key:
 def generate_kanbun(prompt):
     completion = client.chat.completions.create(
         model="llama3-70b-8192",  # Adjust model name if necessary
-        message=[
+         messages=[
             {"role": "system", "content": "You are a skilled Kanbun (classical Chinese) poet."},
             {"role": "user", "content": prompt}
         ]
     )
-    kanbun = completion.choices[0].message.content.strip()
-  # Adjust key paths to match Groq response structure
+    kanbun = response['choices'][0]['message']['content'].strip()
     return kanbun
 
 # Function to translate Kanbun to a selected language
 def translate_kanbun(kanbun, target_language):
     completion = client.chat.completions.create(
         model="llama3-70b-8192",
-        message=f"Translate this Kanbun into {target_language}: {kanbun}"
+        messages=[
+            {"role": "system", "content": f"You are an expert in translating Kanbun (classical Chinese) into {target_language}."},
+            {"role": "user", "content": f"Translate this Kanbun into {target_language}: {kanbun}"}
+        ]
     )
-    translation = completion['choices'][0]['text'].strip()
+    translation = response['choices'][0]['message']['content'].strip()
     return translation
 
 # Function to extract vocabulary from Kanbun and translate to a selected language
 def extract_vocabulary(kanbun, target_language):
     completion = client.chat.completions.create(
         model="llama3-70b-8192",
-        message=(
-            f"Extract important vocabulary from the following Kanbun text (a Chinese poem with Japanese reading order) "
-            f"and provide the {target_language} translation, romaji (pronunciation), example sentences, "
-            f"part-of-speech tags (e.g., noun, verb, adjective, etc.), and JLPT levels sorted from N5 to N1:\n{kanbun}"
-        )
+        messages=[
+            {"role": "system", "content": f"You are an expert in analyzing Kanbun (Chinese texts with Japanese reading order) and providing translations with part-of-speech tagging, JLPT levels, and pronunciation in {target_language}."},
+            {"role": "user", "content": f"Extract important vocabulary from the following Kanbun text (a Chinese poem with Japanese reading order) and provide the {target_language} translation, romaji (pronunciation), example sentences, part-of-speech tags (e.g., noun, verb, adjective, etc.), and JLPT levels sorted from N5 to N1:\n{kanbun}"}
+        ]
     )
-    vocabulary = completion['choices'][0]['text'].strip()
+    vocabulary = response['choices'][0]['message']['content'].strip()
     return vocabulary
 
 # Main application function
