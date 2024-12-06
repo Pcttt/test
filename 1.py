@@ -91,7 +91,6 @@ def main():
                 f"Translation to {target_language}": [translation],
                 f"Key Vocabulary in {target_language} (with JLPT levels and examples)": [vocabulary]
             }
-            
             df = pd.DataFrame(data)
 
             # Display DataFrame
@@ -106,7 +105,7 @@ def main():
                 mime="text/csv"
             )
 
-             st.download_button(
+            st.download_button(
                 label="📄 Download as Excel",
                 data=df.to_excel(index=False, engine='openpyxl').encode('utf-8'),
                 file_name="kanbun_data.xlsx",
