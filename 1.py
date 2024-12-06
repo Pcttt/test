@@ -10,7 +10,7 @@ if groq_api_key:
 
 # Function to generate Kanbun
 def generate_kanbun(prompt):
-    completion = client.generate(
+    completion = client.chat.completions.create(
         model="llama3-70b-8192",  # Adjust model name if necessary
         prompt=prompt
     )
@@ -19,7 +19,7 @@ def generate_kanbun(prompt):
 
 # Function to translate Kanbun to a selected language
 def translate_kanbun(kanbun, target_language):
-    completion = client.generate(
+    completion = client.chat.completions.create(
         model="llama3-70b-8192",
         prompt=f"Translate this Kanbun into {target_language}: {kanbun}"
     )
@@ -28,7 +28,7 @@ def translate_kanbun(kanbun, target_language):
 
 # Function to extract vocabulary from Kanbun and translate to a selected language
 def extract_vocabulary(kanbun, target_language):
-    completion = client.generate(
+    completion = client.chat.completions.create(
         model="llama3-70b-8192",
         prompt=(
             f"Extract important vocabulary from the following Kanbun text (a Chinese poem with Japanese reading order) "
