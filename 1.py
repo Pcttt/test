@@ -13,7 +13,7 @@ def generate_kanbun(prompt):
     completion = client.chat.completions.create(
         model="llama3-70b-8192",  # Adjust model name if necessary
          messages=[
-            {"role": "system", "content": "You are a skilled Kanbun (classical Chinese) poet."},
+            {"role": "system", "content": "You are a skilled Kanbun (Japanese method of reading, annotating and translating lietrary Chinese) poet."},
             {"role": "user", "content": prompt}
         ]
     )
@@ -25,7 +25,7 @@ def translate_kanbun(kanbun, target_language):
     completion = client.chat.completions.create(
         model="llama3-70b-8192",
         messages=[
-            {"role": "system", "content": f"You are an expert in translating Kanbun (classical Chinese) into {target_language}."},
+            {"role": "system", "content": f"You are an expert in translating Kanbun (Japanese method of reading, annotating and translating lietrary Chinese) into {target_language}."},
             {"role": "user", "content": f"Translate this Kanbun into {target_language}: {kanbun}"}
         ]
     )
@@ -37,8 +37,8 @@ def extract_vocabulary(kanbun, target_language):
     completion = client.chat.completions.create(
         model="llama3-70b-8192",
         messages=[
-            {"role": "system", "content": f"You are an expert in analyzing Kanbun (Chinese texts with Japanese reading order) and providing translations with part-of-speech tagging, JLPT levels, and pronunciation in {target_language}."},
-            {"role": "user", "content": f"Extract important vocabulary from the following Kanbun text (a Chinese poem with Japanese reading order) and provide the {target_language} translation, romaji (pronunciation), example sentences, part-of-speech tags (e.g., noun, verb, adjective, etc.), and JLPT levels sorted from N5 to N1:\n{kanbun}"}
+            {"role": "system", "content": f"You are an expert in analyzing Kanbun (Japanese method of reading, annotating and translating lietrary Chinese) and providing translations with part-of-speech tagging, JLPT levels, and pronunciation in {target_language}."},
+            {"role": "user", "content": f"Extract important vocabulary from the following Kanbun text (Japanese method of reading, annotating and translating lietrary Chinese) and provide the {target_language} translation, romaji (pronunciation), example sentences, part-of-speech tags (e.g., noun, verb, adjective, etc.), and JLPT levels sorted from N5 to N1:\n{kanbun}"}
         ]
     )
     vocabulary = completion.choices[0].message.content.strip()
@@ -67,7 +67,7 @@ def main():
 
     if st.button("✨ Generate Kanbun ✨"):
         if sentence:
-            prompt = f"Create a Kanbun (classical Chinese) poem based on the following sentence or passage: {sentence}"
+            prompt = f"Create a Kanbun (Japanese method of reading, annotating and translating lietrary Chinese) poem based on the following sentence or passage: {sentence}"
             kanbun = generate_kanbun(prompt)
 
             # Translate Kanbun to the selected language
