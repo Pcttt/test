@@ -107,7 +107,7 @@ def main():
 
             st.download_button(
                 label="📄 Download as Excel",
-                data=df.to_excel_writer(index=False, engine='openpyxl').encode('utf-8'),
+                data=df.to_excel(index=False, engine='openpyxl').encode('utf-8'),
                 file_name="kanbun_data.xlsx",
                 mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
             )
