@@ -107,7 +107,7 @@ def translate_kanbun(kanbun, target_language):
 
 # Function to extract vocabulary from Kanbun and translate to a selected language
 def extract_vocabulary(kanbun, target_language):
-   client = Groq()
+    client = Groq()
     completion = client.chat.completions.create(
         model="llama3-70b-8192",
         messages=[
