@@ -81,8 +81,9 @@ if groq_api_key:
 
 # Function to generate Kanbun
 def generate_kanbun(prompt):
-    response = groq.chat.completions.create(
-        model="gpt-3.5-turbo",
+    client = Groq()
+    completion = client.chat.completions.create(
+        model="llama3-70b-8192",
         messages=[
             {"role": "system", "content": "You are a skilled Kanbun (classical Chinese) poet."},
             {"role": "user", "content": prompt}
@@ -93,8 +94,9 @@ def generate_kanbun(prompt):
 
 # Function to translate Kanbun to a selected language
 def translate_kanbun(kanbun, target_language):
-    response = groq.chat.completions.create(
-        model="gpt-3.5-turbo",
+    client = Groq()
+    completion = client.chat.completions.create(
+        model="llama3-70b-8192",
         messages=[
             {"role": "system", "content": f"You are an expert in translating Kanbun (classical Chinese) into {target_language}."},
             {"role": "user", "content": f"Translate this Kanbun into {target_language}: {kanbun}"}
@@ -105,8 +107,9 @@ def translate_kanbun(kanbun, target_language):
 
 # Function to extract vocabulary from Kanbun and translate to a selected language
 def extract_vocabulary(kanbun, target_language):
-    response = groq.chat.completions.create(
-        model="gpt-3.5-turbo",
+   client = Groq()
+    completion = client.chat.completions.create(
+        model="llama3-70b-8192",
         messages=[
             {"role": "system", "content": f"You are an expert in analyzing Kanbun (Chinese texts with Japanese reading order) and providing translations with part-of-speech tagging, JLPT levels, and pronunciation in {target_language}."},
             {"role": "user", "content": f"Extract important vocabulary from the following Kanbun text (a Chinese poem with Japanese reading order) and provide the {target_language} translation, romaji (pronunciation), example sentences, part-of-speech tags (e.g., noun, verb, adjective, etc.), and JLPT levels sorted from N5 to N1:\n{kanbun}"}
