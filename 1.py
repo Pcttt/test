@@ -106,13 +106,6 @@ def main():
                 file_name="kanbun_data.xlsx",
                 mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
             )
-
-            st.download_button(
-                label="📄 Download as Excel",
-                data=df.to_excel(index=False, engine='openpyxl').encode('utf-8'),
-                file_name="kanbun_data.xlsx",
-                mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
-            )
         else:
             st.warning("⚠️ Please enter a sentence or passage to generate a poem ⚠️")
 
