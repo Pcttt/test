@@ -1,4 +1,4 @@
-import groq
+import Groq
 import streamlit as st
 import pandas as pd
 
@@ -77,7 +77,7 @@ st.markdown("""
 # Sidebar for API key input
 groq_api_key = st.sidebar.text_input("🔑 Enter your Groq API Key:", type="password")
 if groq_api_key:
-    groq.api_key = groq_api_key
+    client = Groq(api_key=groq_api_key)
 
 # Function to generate Kanbun
 def generate_kanbun(prompt):
