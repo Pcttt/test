@@ -81,7 +81,7 @@ if groq_api_key:
 
 # Function to generate Kanbun
 def generate_kanbun(prompt):
-    client = Groq()
+
     completion = client.chat.completions.create(
         model="llama3-70b-8192",
         messages=[
@@ -94,7 +94,7 @@ def generate_kanbun(prompt):
 
 # Function to translate Kanbun to a selected language
 def translate_kanbun(kanbun, target_language):
-    client = Groq()
+
     completion = client.chat.completions.create(
         model="llama3-70b-8192",
         messages=[
@@ -107,7 +107,7 @@ def translate_kanbun(kanbun, target_language):
 
 # Function to extract vocabulary from Kanbun and translate to a selected language
 def extract_vocabulary(kanbun, target_language):
-    client = Groq()
+
     completion = client.chat.completions.create(
         model="llama3-70b-8192",
         messages=[
