@@ -93,7 +93,7 @@ def main():
             }
             
             with pd.ExcelWriter("kanbun_data.xlsx", engine="openpyxl") as writer:
-            df.to_excel(writer, index=False)
+                df.to_excel(writer, index=False)
             
             # Display DataFrame
             st.subheader("📊 Poem Details in Table Format:")
