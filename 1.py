@@ -96,7 +96,7 @@ def main():
     
     # Second image (on the right)
     with col2:
-        st.image("https://kotobaken.jp/wp-content/uploads/2019/06/qa84_01.jpg", width=300, use_column_width=False, caption="Kanbun Scroll Example")
+        st.image("https://kotobaken.jp/wp-content/uploads/2019/06/qa84_01.jpg", width=200, use_column_width=False, caption="Kanbun Scroll Example")
 
     # Pre-filled starter text for the input box
     starter_text = "The cherry blossoms bloom as the sun rises, painting the sky with hues of pink and gold."
