@@ -95,7 +95,7 @@ def main():
     
     # Second image (on the right)
     with col2:
-        st.image("https://media.eboard.jp/media/quiz_images/kanbun1_01_20220303.jpg", width=350")
+        st.image("https://media.eboard.jp/media/quiz_images/kanbun1_01_20220303.jpg", width=350)
 
     
     # Pre-filled starter text for the input box
