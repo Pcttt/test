@@ -98,6 +98,12 @@ def main():
             st.subheader("📊 Poem Details in Table Format:")
             st.dataframe(df)
 
+            excel = BytesIO()
+
+            with pd.ExcelWriter(excel, engine='openpyxl') as writer:
+                df.to_excel(writer, index = False, sheet_name = "Kanbun")
+            excel.seek(0)
+
             # Download buttons for CSV and Excel
             st.download_button(
                 label="📏 Download as CSV",
@@ -108,9 +114,10 @@ def main():
 
             st.download_button(
                 label="📄 Download as Excel",
-                data=df.to_excel(index=False, engine='openpyxl').encode('utf-8'),
+                data= excel,
                 file_name="kanbun_data.xlsx",
                 mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+                key = "kanbun_data_download"
             )
         else:
             st.warning("⚠️ Please enter a sentence or passage to generate a poem ⚠️")
