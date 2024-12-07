@@ -13,8 +13,7 @@ generate_button = st.markdown(
         color: #D47F6A; /* Soft peach text */
         font-size: 16px;
         border-radius: 12px;
-        border: 2px solid #FFB3BA; /* Light pastel border */
-        padding: 10px 20px; /* Optional padding for better appearance */
+        border: 2px solid #FFB3BA; /* Light pastel border */ 
         cursor: pointer; /* Pointer cursor for better UX */
     }
     .stButton button:hover {
