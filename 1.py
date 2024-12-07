@@ -5,6 +5,26 @@ import openpyxl as xl
 import io 
 from io import BytesIO
 
+generate_button = st.markdown(
+    """
+    <style>
+    div.stButton > button:first-child {
+        background-color: #FADADD;  /* Pastel Pink */
+        color: #000000;  /* Black text */
+        border: none;
+        padding: 10px 20px;
+        font-size: 16px;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    div.stButton > button:first-child:hover {
+        background-color: #F7BEC5;  /* Slightly darker pastel pink on hover */
+    }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
+
 # Sidebar for API key input
 groq_api_key = st.sidebar.text_input("🔑 Enter your Groq API Key:", type="password")
 client = None
