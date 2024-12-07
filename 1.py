@@ -85,7 +85,7 @@ def main():
     """)
 
     st.markdown("""
-    **📜 Examples of Kanbun** 
+    **📜 Examples of Kanbun:** 
     """)
 
     col1, col2 = st.columns([1, 1])  # Two columns with equal width
@@ -100,14 +100,14 @@ def main():
     
     # Pre-filled starter text for the input box
     starter_text = "The cherry blossoms bloom as the sun rises, painting the sky with hues of pink and gold."
-    sentence = st.text_area("🌻 Enter a sentence or passage for the Kanbun poem (e.g., a short story or a descriptive paragraph):", value=starter_text)
+    sentence = st.text_area("**🌻 Enter a sentence or passage for the Kanbun poem (e.g., a short story or a descriptive paragraph):**", value=starter_text)
 
     # Language selection for translation
     languages = [
         "English", "Thai", "Korean", "French", "Spanish", "German", "Italian", "Portuguese", "Chinese (Simplified)",
         "Arabic", "Russian", "Hindi", "Bengali", "Vietnamese", "Turkish", "Indonesian", "Malay", "Swahili", "Dutch", "Greek"
     ]
-    target_language = st.selectbox("🌐 Select the language for translation:", languages)
+    target_language = st.selectbox("**🌐 Select the language for translation:**", languages)
 
     if st.button("✨ Generate Kanbun ✨"):
         if sentence:
