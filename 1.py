@@ -123,6 +123,10 @@ def main():
             st.subheader("🎋 Generated Kanbun Poem:")
             st.write(kanbun)
 
+            st.markdown("""
+            <hr style="border: 1px solid #D3D3D3; margin-top: 50px;">
+            """)
+
             st.subheader(f"🌐 Translation to {target_language}:")
             st.write(translation)
 
