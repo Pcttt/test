@@ -5,6 +5,11 @@ import openpyxl as xl
 import io 
 from io import BytesIO
 
+st.image("https://i.pinimg.com/736x/cf/8a/dd/cf8add09fa8261f23fcae8347a181fe5.jpg", use_column_width=True, caption="Kanbun Poetry - The Art of Classical Chinese Literature")
+    
+    # Image of Kanbun calligraphy (if available locally or through a URL)
+st.image("https://i.pinimg.com/736x/cf/8a/dd/cf8add09fa8261f23fcae8347a181fe5.jpg", width=600, caption="Example of Kanbun Calligraphy")
+
 generate_button = st.markdown(
     """
     <style>
@@ -66,13 +71,6 @@ def extract_vocabulary(kanbun, target_language):
     )
     vocabulary = completion.choices[0].message.content.strip()
     return vocabulary
-
-def display_kanbun_images():
-    # Image at the top of the page
-    st.image("https://i.pinimg.com/736x/cf/8a/dd/cf8add09fa8261f23fcae8347a181fe5.jpg", use_column_width=True, caption="Kanbun Poetry - The Art of Classical Chinese Literature")
-    
-    # Image of Kanbun calligraphy (if available locally or through a URL)
-    st.image("https://i.pinimg.com/736x/cf/8a/dd/cf8add09fa8261f23fcae8347a181fe5.jpg", width=600, caption="Example of Kanbun Calligraphy")
 
 # Main application function
 def main():
