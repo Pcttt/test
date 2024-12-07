@@ -90,15 +90,12 @@ def main():
 
     col1, col2 = st.columns([1, 1])  # Two columns with equal width
 
-    image_width = 400
-    image_height = 300
-
     with col1:
-        st.image("https://i.pinimg.com/736x/cf/8a/dd/cf8add09fa8261f23fcae8347a181fe5.jpg", width=image_width, height=image_height, use_column_width=False, caption="Kanbun Calligraphy Example")
+        st.image("https://i.pinimg.com/736x/cf/8a/dd/cf8add09fa8261f23fcae8347a181fe5.jpg", width=350, use_column_width=False, caption="Kanbun Calligraphy Example")
     
     # Second image (on the right)
     with col2:
-        st.image("https://kotobaken.jp/wp-content/uploads/2019/06/qa84_01.jpg", width=image_width, height=image_height, caption="Kanbun Scroll Example")
+        st.image("https://kotobaken.jp/wp-content/uploads/2019/06/qa84_01.jpg", width=350, caption="Kanbun Scroll Example")
 
     
     # Pre-filled starter text for the input box
