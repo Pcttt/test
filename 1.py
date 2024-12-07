@@ -69,10 +69,10 @@ def extract_vocabulary(kanbun, target_language):
 
 def display_kanbun_images():
     # Image at the top of the page
-    st.image("https://example.com/kanbun_header_image.jpg", use_column_width=True, caption="Kanbun Poetry - The Art of Classical Chinese Literature")
+    st.image("https://i.pinimg.com/736x/cf/8a/dd/cf8add09fa8261f23fcae8347a181fe5.jpg", use_column_width=True, caption="Kanbun Poetry - The Art of Classical Chinese Literature")
     
     # Image of Kanbun calligraphy (if available locally or through a URL)
-    st.image("https://example.com/kanbun_calligraphy.jpg", width=600, caption="Example of Kanbun Calligraphy")
+    st.image("https://i.pinimg.com/736x/cf/8a/dd/cf8add09fa8261f23fcae8347a181fe5.jpg", width=600, caption="Example of Kanbun Calligraphy")
 
 # Main application function
 def main():
