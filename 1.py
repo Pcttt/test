@@ -52,7 +52,7 @@ def main():
     st.markdown(
     """
     <h1 style="text-align: center; font-size: 2.5em;">
-        🌸 Learn Japanese with <span style="border-bottom: 3px solid #D2A9B0;">Kanbun Poetry</span> 🌸
+        🌸 Learn Japanese with <span style="border-bottom: 3px solid #F1CFE5;">Kanbun Poetry</span> 🌸
     </h1>
     """,
     unsafe_allow_html=True
