@@ -1,6 +1,7 @@
 from groq import Groq
 import streamlit as st
 import pandas as pd
+import openpyxl as xl
 
 # Sidebar for API key input
 groq_api_key = st.sidebar.text_input("🔑 Enter your Groq API Key:", type="password")
