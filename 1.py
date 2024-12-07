@@ -56,8 +56,7 @@ def main():
     </h1>
     """,
     unsafe_allow_html=True
-)
-
+    )
 
     # Brief explanation about Kanbun
     st.markdown("""
@@ -131,6 +130,16 @@ def main():
             )
         else:
             st.warning("⚠️ Please enter a sentence or passage to generate a poem ⚠️")
+
+            # Add a footer with a gray line and a message
+    st.markdown(
+        """
+        <hr style="border: 1px solid #D3D3D3; margin-top: 50px;">
+        <p style="text-align: center; font-size: 0.9em; color: #555;">Made with ❤️</p>
+        """,
+        unsafe_allow_html=True
+    )
+
 
 if __name__ == "__main__":
     if client:
