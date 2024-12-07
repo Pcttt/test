@@ -120,18 +120,22 @@ def main():
             # Extract vocabulary and translate to the selected language
             vocabulary = extract_vocabulary(kanbun, target_language)
 
+            st.markdown("<hr style='border: 1px solid #D3D3D3; margin-top: 10px; margin-bottom: 10px;'>", unsafe_allow_html=True)
+
             st.subheader("🎋 Generated Kanbun Poem:")
             st.write(kanbun)
 
-            st.markdown(
-            <hr style="border: 1px solid #D3D3D3; margin-top: 50px;">
-            )
+            st.markdown("<hr style='border: 1px solid #D3D3D3; margin-top: 10px; margin-bottom: 10px;'>", unsafe_allow_html=True)
 
             st.subheader(f"🌐 Translation to {target_language}:")
             st.write(translation)
 
+            st.markdown("<hr style='border: 1px solid #D3D3D3; margin-top: 10px; margin-bottom: 10px;'>", unsafe_allow_html=True)
+
             st.subheader(f"📚 Key Vocabulary in {target_language} (with JLPT levels and examples):")
             st.write(vocabulary)
+
+            st.markdown("<hr style='border: 1px solid #D3D3D3; margin-top: 10px; margin-bottom: 10px;'>", unsafe_allow_html=True)
 
             data = {
                 "Input Sentence/Passage": [sentence],
