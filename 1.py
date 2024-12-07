@@ -8,19 +8,16 @@ from io import BytesIO
 generate_button = st.markdown(
     """
     <style>
-    div.stButton > button:first-child {
-        background-color: #FADADD;  /* Pastel Pink */
-        color: #000000;  /* Black text */
-        border: none;
-        padding: 10px 20px;
-        font-size: 16px;
-        border-radius: 5px;
-        cursor: pointer;
-    }
-    div.stButton > button:first-child:hover {
-        background-color: #F7BEC5;  /* Slightly darker pastel pink on hover */
-    }
-    </style>
+    .stButton button {
+            background-color: #FFDFD3; /* Pastel coral buttons */
+            color: #D47F6A; /* Soft peach text */
+            font-size: 16px;
+            border-radius: 12px;
+            border: 2px solid #FFB3BA;
+        }
+        .stButton button:hover {
+            background-color: #FFD1C1; /* Slightly darker pastel coral on hover */
+        }
     """,
     unsafe_allow_html=True
 )
