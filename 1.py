@@ -9,18 +9,22 @@ generate_button = st.markdown(
     """
     <style>
     .stButton button {
-            background-color: #FFDFD3; /* Pastel coral buttons */
-            color: #D47F6A; /* Soft peach text */
-            font-size: 16px;
-            border-radius: 12px;
-            border: 2px solid #FFB3BA;
-        }
-        .stButton button:hover {
-            background-color: #FFD1C1; /* Slightly darker pastel coral on hover */
-        }
+        background-color: transparent; /* Transparent background */
+        color: #D47F6A; /* Soft peach text */
+        font-size: 16px;
+        border-radius: 12px;
+        border: 2px solid #FFB3BA; /* Light pastel border */
+        padding: 10px 20px; /* Optional padding for better appearance */
+        cursor: pointer; /* Pointer cursor for better UX */
+    }
+    .stButton button:hover {
+        background-color: #FFD1C1; /* Slightly darker pastel coral on hover */
+    }
+    </style>
     """,
     unsafe_allow_html=True
 )
+
 
 # Sidebar for API key input
 groq_api_key = st.sidebar.text_input("🔑 Enter your Groq API Key:", type="password")
