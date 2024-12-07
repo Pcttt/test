@@ -131,14 +131,22 @@ def main():
         else:
             st.warning("⚠️ Please enter a sentence or passage to generate a poem ⚠️")
 
-            # Add a footer with a gray line and a message
+            
+        # Add a footer with a gray line, message, and links
     st.markdown(
         """
         <hr style="border: 1px solid #D3D3D3; margin-top: 50px;">
-        <p style="text-align: center; font-size: 0.9em; color: #555;">Made with ❤️</p>
+        <p style="text-align: center; font-size: 0.9em; color: #555;">
+            Made with ❤️ | 
+            <a href="https://github.com/Pcttt/test" target="_blank" style="color: #1E90FF; text-decoration: none;">Check out & ⭐️ GitHub Repo</a>
+        </p>
+        <p style="text-align: center; font-size: 0.8em; color: #555;">
+            Powered by 🔋 Streamlit & OpenAI
+        </p>
         """,
         unsafe_allow_html=True
     )
+
 
 
 if __name__ == "__main__":
