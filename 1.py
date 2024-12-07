@@ -124,5 +124,5 @@ def main():
         else:
             st.warning("⚠️ Please enter a sentence or passage to generate a poem ⚠️")
 
-if __name__ == "__main__":
+__name__ == "__main__":
    
