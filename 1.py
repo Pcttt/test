@@ -5,11 +5,6 @@ import openpyxl as xl
 import io 
 from io import BytesIO
 
-st.image("https://i.pinimg.com/736x/cf/8a/dd/cf8add09fa8261f23fcae8347a181fe5.jpg", use_column_width=True, caption="Kanbun Poetry - The Art of Classical Chinese Literature")
-    
-    # Image of Kanbun calligraphy (if available locally or through a URL)
-st.image("https://i.pinimg.com/736x/cf/8a/dd/cf8add09fa8261f23fcae8347a181fe5.jpg", width=600, caption="Example of Kanbun Calligraphy")
-
 generate_button = st.markdown(
     """
     <style>
@@ -88,6 +83,9 @@ def main():
     **What is Kanbun?**  
     Kanbun (漢文) refers to classical Chinese literature, widely used historically in Japan. It is known for its poetic elegance and scholarly depth. This application generates Kanbun poetry based on a passage or sentence, translates it into a selected language, and provides key vocabulary for further analysis!
     """)
+
+    # Image of Kanbun calligraphy (if available locally or through a URL)
+    st.image("https://i.pinimg.com/736x/cf/8a/dd/cf8add09fa8261f23fcae8347a181fe5.jpg", width=600, caption="Example of Kanbun Calligraphy")
 
     # Pre-filled starter text for the input box
     starter_text = "The cherry blossoms bloom as the sun rises, painting the sky with hues of pink and gold."
