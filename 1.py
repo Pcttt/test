@@ -98,7 +98,7 @@ def main():
     
     # Second image (on the right)
     with col2:
-        st.image("https://kotobaken.jp/wp-content/uploads/2019/06/qa84_01.jpg", width=image_width, height=image_height, use_column_width=False, caption="Kanbun Scroll Example")
+        st.image("https://kotobaken.jp/wp-content/uploads/2019/06/qa84_01.jpg", width=image_width, height=image_height, caption="Kanbun Scroll Example")
 
     
     # Pre-filled starter text for the input box
