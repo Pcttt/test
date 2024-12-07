@@ -87,7 +87,7 @@ def main():
             # Extract vocabulary and translate to the selected language
             vocabulary = extract_vocabulary(kanbun, target_language)
 
-            st.subheader("🌈 Generated Kanbun Poem:")
+            st.subheader("🎋 Generated Kanbun Poem:")
             st.write(kanbun)
 
             st.subheader(f"🌐 Translation to {target_language}:")
