@@ -125,7 +125,4 @@ def main():
             st.warning("⚠️ Please enter a sentence or passage to generate a poem ⚠️")
 
 if __name__ == "__main__":
-    if client:
-        main()
-    else:
-        st.error("Please enter a valid Groq API Key.")
+   
