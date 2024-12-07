@@ -16,7 +16,7 @@ def generate_kanbun(prompt):
     completion = client.chat.completions.create(
         model="llama3-70b-8192",  # Adjust model name if necessary
          messages=[
-            {"role": "system", "content": "You are a skilled Kanbun (Japanese method of reading, annotating and translating lietrary Chinese) poet."},
+            {"role": "system", "content": "You are a skilled Kanbun (Japanese method of reading, annotating and translating literary Chinese) poet."},
             {"role": "user", "content": prompt}
         ]
     )
@@ -28,7 +28,7 @@ def translate_kanbun(kanbun, target_language):
     completion = client.chat.completions.create(
         model="llama3-70b-8192",
         messages=[
-            {"role": "system", "content": f"You are an expert in translating Kanbun (Japanese method of reading, annotating and translating lietrary Chinese) into {target_language}."},
+            {"role": "system", "content": f"You are an expert in translating Kanbun (Japanese method of reading, annotating and translating literary Chinese) into {target_language}."},
             {"role": "user", "content": f"Translate this Kanbun into {target_language}: {kanbun}"}
         ]
     )
@@ -40,12 +40,28 @@ def extract_vocabulary(kanbun, target_language):
     completion = client.chat.completions.create(
         model="llama3-70b-8192",
         messages=[
-            {"role": "system", "content": f"You are an expert in analyzing Kanbun (Japanese method of reading, annotating and translating lietrary Chinese) and providing translations with part-of-speech tagging, JLPT levels, and pronunciation in {target_language}."},
-            {"role": "user", "content": f"Extract important vocabulary from the following Kanbun text (Japanese method of reading, annotating and translating lietrary Chinese) and provide the {target_language} translation, romaji (pronunciation), example sentences, part-of-speech tags (e.g., noun, verb, adjective, etc.), and JLPT levels sorted from N5 to N1:\n{kanbun}"}
+            {"role": "system", "content": f"You are an expert in analyzing Kanbun (Japanese method of reading, annotating and translating literary Chinese) and providing translations with part-of-speech tagging, JLPT levels, and pronunciation in {target_language}."},
+            {"role": "user", "content": f"Extract important vocabulary from the following Kanbun text (Japanese method of reading, annotating and translating literary Chinese) and provide the {target_language} translation, romaji (pronunciation), example sentences, part-of-speech tags (e.g., noun, verb, adjective, etc.), and JLPT levels sorted from N5 to N1:\n{kanbun}"}
         ]
     )
     vocabulary = completion.choices[0].message.content.strip()
     return vocabulary
+
+# Function to filter vocabulary lines and remove introductory sentences
+def filter_vocabulary(vocabulary_text):
+    # Split the vocabulary text into lines
+    lines = vocabulary_text.splitlines()
+
+    # Filter out introductory sentences or lines that don't represent vocabulary
+    vocab_lines = [line for line in lines if is_vocabulary_line(line)]
+
+    # Join the vocabulary lines back into a single string (optional)
+    return "\n".join(vocab_lines)
+
+def is_vocabulary_line(line):
+    # Define criteria for a vocabulary line (customize this based on format)
+    # For example, assume vocabulary lines contain specific characters or structures
+    return any(char.isdigit() or char.isalpha() for char in line) and not line.startswith("Note") and len(line.strip()) > 0
 
 # Main application function
 def main():
@@ -70,14 +86,15 @@ def main():
 
     if st.button("✨ Generate Kanbun ✨"):
         if sentence:
-            prompt = f"Create a Kanbun (Japanese method of reading, annotating and translating lietrary Chinese) poem based on the following sentence or passage: {sentence}"
+            prompt = f"Create a Kanbun (Japanese method of reading, annotating and translating literary Chinese) poem based on the following sentence or passage: {sentence}"
             kanbun = generate_kanbun(prompt)
 
             # Translate Kanbun to the selected language
             translation = translate_kanbun(kanbun, target_language)
 
             # Extract vocabulary and translate to the selected language
-            vocabulary = extract_vocabulary(kanbun, target_language)
+            raw_vocabulary = extract_vocabulary(kanbun, target_language)
+            filtered_vocabulary = filter_vocabulary(raw_vocabulary)
 
             st.subheader("🌈 Generated Kanbun Poem:")
             st.write(kanbun)
@@ -86,13 +103,11 @@ def main():
             st.write(translation)
 
             st.subheader(f"📚 Key Vocabulary in {target_language} (with JLPT levels and examples):")
-            st.write(vocabulary)
+            st.write(filtered_vocabulary)
 
             data = {
-                "Input Sentence/Passage": [sentence],
                 "Kanbun Poem": [kanbun],
-                f"Translation to {target_language}": [translation],
-                f"Key Vocabulary in {target_language} (with JLPT levels and examples)": [vocabulary]
+                f"Key Vocabulary in {target_language}": [filtered_vocabulary]
             }
             df = pd.DataFrame(data)
 
@@ -103,7 +118,7 @@ def main():
             excel = BytesIO()
 
             with pd.ExcelWriter(excel, engine='openpyxl') as writer:
-                df.to_excel(writer, index = False, sheet_name = "Kanbun")
+                df.to_excel(writer, index=False, sheet_name="Kanbun")
             excel.seek(0)
 
             # Download buttons for CSV and Excel
@@ -116,10 +131,10 @@ def main():
 
             st.download_button(
                 label="📄 Download as Excel",
-                data= excel,
+                data=excel,
                 file_name="kanbun_data.xlsx",
                 mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
-                key = "kanbun_data_download"
+                key="kanbun_data_download"
             )
         else:
             st.warning("⚠️ Please enter a sentence or passage to generate a poem ⚠️")
