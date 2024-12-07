@@ -87,11 +87,9 @@ def main():
     st.markdown("""
     **Example of Kanbun** 
     """)
-    
-    # Image centered and smaller size (adjust width as needed)
 
     # Image of Kanbun calligraphy (if available locally or through a URL)
-    st.image("https://i.pinimg.com/736x/cf/8a/dd/cf8add09fa8261f23fcae8347a181fe5.jpg", width=200, caption="Example of Kanbun Calligraphy")
+    st.image("https://i.pinimg.com/736x/cf/8a/dd/cf8add09fa8261f23fcae8347a181fe5.jpg", width=350)
 
     # Pre-filled starter text for the input box
     starter_text = "The cherry blossoms bloom as the sun rises, painting the sky with hues of pink and gold."
