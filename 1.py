@@ -92,15 +92,15 @@ def main():
 
     image_width = 400
     image_height = 300
-    
-    # First image (on the left)
+
     with col1:
         st.image("https://i.pinimg.com/736x/cf/8a/dd/cf8add09fa8261f23fcae8347a181fe5.jpg", width=image_width, height=image_height, use_column_width=False, caption="Kanbun Calligraphy Example")
-     
+    
     # Second image (on the right)
     with col2:
-        st.image("https://kotobaken.jp/wp-content/uploads/2019/06/qa84_01.jpg", width=image_width, height=image_height, caption="Kanbun Scroll Example")
+        st.image("https://kotobaken.jp/wp-content/uploads/2019/06/qa84_01.jpg", width=image_width, height=image_height, use_column_width=False, caption="Kanbun Scroll Example")
 
+    
     # Pre-filled starter text for the input box
     starter_text = "The cherry blossoms bloom as the sun rises, painting the sky with hues of pink and gold."
     sentence = st.text_area("🌻 Enter a sentence or passage for the Kanbun poem (e.g., a short story or a descriptive paragraph):", value=starter_text)
