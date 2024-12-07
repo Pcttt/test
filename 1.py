@@ -116,7 +116,7 @@ def main():
                 label="📄 Download as Excel",
                 data= excel,
                 file_name="kanbun_data.xlsx",
-                mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+                mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
                 key = "kanbun_data_download"
             )
         else:
