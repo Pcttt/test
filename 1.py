@@ -24,7 +24,6 @@ generate_button = st.markdown(
     unsafe_allow_html=True
 )
 
-
 # Sidebar for API key input
 groq_api_key = st.sidebar.text_input("🔑 Enter your Groq API Key:", type="password")
 client = None
@@ -35,22 +34,25 @@ if groq_api_key:
 def generate_kanbun(prompt):
     completion = client.chat.completions.create(
         model="llama3-70b-8192",  # Adjust model name if necessary
-         messages=[
-            {"role": "system", "content": "You are a skilled Kanbun (Japanese method of reading, annotating and translating lietrary Chinese) poet."},
-            {"role": "user", "content": prompt}
-        ]
+        messages=[{"role": "system", "content": "You are a skilled Kanbun (Japanese method of reading, annotating and translating literary Chinese) poet."},
+                  {"role": "user", "content": prompt}]
     )
     kanbun = completion.choices[0].message.content.strip()
     return kanbun
+
+# Function to convert Kanbun to Modern Japanese
+def convert_kanbun_to_modern_japanese(kanbun):
+    # Here, you would integrate or call a specific tool for this conversion.
+    # For simplicity, let's assume a placeholder function that returns a modern Japanese equivalent.
+    modern_japanese = f"Modern Japanese: {kanbun} (This is where conversion would occur.)"
+    return modern_japanese
 
 # Function to translate Kanbun to a selected language
 def translate_kanbun(kanbun, target_language):
     completion = client.chat.completions.create(
         model="llama3-70b-8192",
-        messages=[
-            {"role": "system", "content": f"You are an expert in translating Kanbun (Japanese method of reading, annotating and translating lietrary Chinese) into {target_language}."},
-            {"role": "user", "content": f"Translate this Kanbun into {target_language}: {kanbun}"}
-        ]
+        messages=[{"role": "system", "content": f"You are an expert in translating Kanbun (Japanese method of reading, annotating and translating literary Chinese) into {target_language}."},
+                  {"role": "user", "content": f"Translate this Kanbun into {target_language}: {kanbun}"}]
     )
     translation = completion.choices[0].message.content.strip()
     return translation
@@ -59,10 +61,8 @@ def translate_kanbun(kanbun, target_language):
 def extract_vocabulary(kanbun, target_language):
     completion = client.chat.completions.create(
         model="llama3-70b-8192",
-        messages=[
-            {"role": "system", "content": f"You are an expert in analyzing Kanbun (Japanese method of reading, annotating and translating lietrary Chinese) and providing translations with part-of-speech tagging, JLPT levels, and pronunciation in {target_language}."},
-            {"role": "user", "content": f"Extract important vocabulary from the following Kanbun text (Japanese method of reading, annotating and translating lietrary Chinese) and provide the {target_language} translation, romaji (pronunciation), example sentences, part-of-speech tags (e.g., noun, verb, adjective, etc.), and JLPT levels sorted from N5 to N1:\n{kanbun}"}
-        ]
+        messages=[{"role": "system", "content": f"You are an expert in analyzing Kanbun (Japanese method of reading, annotating and translating literary Chinese) and providing translations with part-of-speech tagging, JLPT levels, and pronunciation in {target_language}."},
+                  {"role": "user", "content": f"Extract important vocabulary from the following Kanbun text (Japanese method of reading, annotating and translating literary Chinese) and provide the {target_language} translation, romaji (pronunciation), example sentences, part-of-speech tags (e.g., noun, verb, adjective, etc.), and JLPT levels sorted from N5 to N1:\n{kanbun}"}]
     )
     vocabulary = completion.choices[0].message.content.strip()
     return vocabulary
@@ -79,25 +79,8 @@ def main():
     )
 
     # Brief explanation about Kanbun
-    st.markdown("""
-    **What is Kanbun?**  
-    Kanbun (漢文) refers to classical Chinese literature, widely used historically in Japan. It is known for its poetic elegance and scholarly depth. This application generates Kanbun poetry based on a passage or sentence, translates it into a selected language, and provides key vocabulary for further analysis!
-    """)
+    st.markdown("""**What is Kanbun?** Kanbun (漢文) refers to classical Chinese literature, widely used historically in Japan. It is known for its poetic elegance and scholarly depth. This application generates Kanbun poetry based on a passage or sentence, translates it into a selected language, and provides key vocabulary for further analysis!""")
 
-    st.markdown("""
-    **📜 Examples of Kanbun:** 
-    """)
-
-    col1, col2 = st.columns([1, 1])  # Two columns with equal width
-
-    with col1:
-        st.image("https://i.pinimg.com/736x/cf/8a/dd/cf8add09fa8261f23fcae8347a181fe5.jpg", width=350, use_column_width=False)
-    
-    # Second image (on the right)
-    with col2:
-        st.image("https://media.eboard.jp/media/quiz_images/kanbun1_01_20220303.jpg", width=350)
-
-    
     # Pre-filled starter text for the input box
     starter_text = "The cherry blossoms bloom as the sun rises, painting the sky with hues of pink and gold."
     sentence = st.text_area("**🌻 Enter a sentence or passage for the Kanbun poem (e.g., a short story or a descriptive paragraph):**", value=starter_text)
@@ -111,14 +94,23 @@ def main():
 
     if st.button("✨ Generate Kanbun ✨"):
         if sentence:
-            prompt = f"Create a Kanbun (Japanese method of reading, annotating and translating lietrary Chinese) poem based on the following sentence or passage: {sentence}"
+            prompt = f"Create a Kanbun (Japanese method of reading, annotating and translating literary Chinese) poem based on the following sentence or passage: {sentence}"
             kanbun = generate_kanbun(prompt)
 
-            # Translate Kanbun to the selected language
-            translation = translate_kanbun(kanbun, target_language)
+            # Convert Kanbun to Modern Japanese
+            modern_japanese = convert_kanbun_to_modern_japanese(kanbun)
+
+            st.markdown("<hr style='border: 1px solid #D3D3D3; margin-top: 10px; margin-bottom: 10px;'>", unsafe_allow_html=True)
+
+            # Display the modern Japanese version before translation
+            st.subheader("📝 Kanbun to Modern Japanese Conversion:")
+            st.write(modern_japanese)
+
+            # Translate the modern Japanese to the selected language
+            translation = translate_kanbun(modern_japanese, target_language)
 
             # Extract vocabulary and translate to the selected language
-            vocabulary = extract_vocabulary(kanbun, target_language)
+            vocabulary = extract_vocabulary(modern_japanese, target_language)
 
             st.markdown("<hr style='border: 1px solid #D3D3D3; margin-top: 10px; margin-bottom: 10px;'>", unsafe_allow_html=True)
 
@@ -173,8 +165,6 @@ def main():
         else:
             st.warning("⚠️ Please enter a sentence or passage to generate a poem ⚠️")
 
-            
-        # Add a footer with a gray line, message, and links
     st.markdown(
         """
         <hr style="border: 1px solid #D3D3D3; margin-top: 50px;">
@@ -188,8 +178,6 @@ def main():
         """,
         unsafe_allow_html=True
     )
-
-
 
 if __name__ == "__main__":
     if client:
