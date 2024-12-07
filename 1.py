@@ -67,6 +67,13 @@ def extract_vocabulary(kanbun, target_language):
     vocabulary = completion.choices[0].message.content.strip()
     return vocabulary
 
+def display_kanbun_images():
+    # Image at the top of the page
+    st.image("https://example.com/kanbun_header_image.jpg", use_column_width=True, caption="Kanbun Poetry - The Art of Classical Chinese Literature")
+    
+    # Image of Kanbun calligraphy (if available locally or through a URL)
+    st.image("https://example.com/kanbun_calligraphy.jpg", width=600, caption="Example of Kanbun Calligraphy")
+
 # Main application function
 def main():
     st.markdown(
