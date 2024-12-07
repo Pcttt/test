@@ -88,8 +88,15 @@ def main():
     **Examples of Kanbun** 
     """)
 
-    # Image of Kanbun calligraphy (if available locally or through a URL)
-    st.image("https://i.pinimg.com/736x/cf/8a/dd/cf8add09fa8261f23fcae8347a181fe5.jpg","https://kotobaken.jp/wp-content/uploads/2019/06/qa84_01.jpg",width=350)
+    col1, col2 = st.columns([1, 1])  # Two columns with equal width
+    
+    # First image (on the left)
+    with col1:
+        st.image("https://i.pinimg.com/736x/cf/8a/dd/cf8add09fa8261f23fcae8347a181fe5.jpg", width=350, use_column_width=False, caption="Kanbun Calligraphy Example")
+    
+    # Second image (on the right)
+    with col2:
+        st.image("https://kotobaken.jp/wp-content/uploads/2019/06/qa84_01.jpg", width=350, use_column_width=False, caption="Kanbun Scroll Example")
 
     # Pre-filled starter text for the input box
     starter_text = "The cherry blossoms bloom as the sun rises, painting the sky with hues of pink and gold."
