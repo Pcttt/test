@@ -84,17 +84,14 @@ def main():
     Kanbun (漢文) refers to classical Chinese literature, widely used historically in Japan. It is known for its poetic elegance and scholarly depth. This application generates Kanbun poetry based on a passage or sentence, translates it into a selected language, and provides key vocabulary for further analysis!
     """)
 
-    st.markdown(
-        """
-        <h2 style="text-align: center; font-size: 2em; color: #D47F6A;">
-            Example of Kanbun Calligraphy
-        </h2>
-        """)
+    st.markdown("""
+    **Example of Kanbun** 
+    """)
     
     # Image centered and smaller size (adjust width as needed)
 
     # Image of Kanbun calligraphy (if available locally or through a URL)
-    st.image("https://i.pinimg.com/736x/cf/8a/dd/cf8add09fa8261f23fcae8347a181fe5.jpg", width=600, caption="Example of Kanbun Calligraphy")
+    st.image("https://i.pinimg.com/736x/cf/8a/dd/cf8add09fa8261f23fcae8347a181fe5.jpg", width=200, caption="Example of Kanbun Calligraphy")
 
     # Pre-filled starter text for the input box
     starter_text = "The cherry blossoms bloom as the sun rises, painting the sky with hues of pink and gold."
