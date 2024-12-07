@@ -50,17 +50,20 @@ def extract_vocabulary(kanbun, target_language):
 # Main application function
 def main():
     st.markdown(
-        """<h1 style='color:gold;'>🌸 Learn Japanese with <span style='color:black;'>Kanbun Poetry</span> 🌸</h1>""",
-        unsafe_allow_html=True
-    )
+    """
+    <h1 style="text-align: center; font-size: 2.5em;">
+        🌸 <span style="border-bottom: 5px solid #F8BBD0;">Learn Japanese with Kanbun Poetry</span> 🌸
+    </h1>
+    """,
+    unsafe_allow_html=True
+)
+
 
     # Brief explanation about Kanbun
-    st.markdown(
-        """
-        **<span style='color:gold;'>Kanbun (漢文)</span> refers to classical Chinese literature**, widely used historically in Japan. It is known for its poetic elegance and scholarly depth. This application generates Kanbun poetry based on a passage or sentence, translates it into a selected language, and provides key vocabulary for further analysis!
-        """,
-        unsafe_allow_html=True
-    )
+    st.markdown("""
+    **What is Kanbun?**  
+    Kanbun (漢文) refers to classical Chinese literature, widely used historically in Japan. It is known for its poetic elegance and scholarly depth. This application generates Kanbun poetry based on a passage or sentence, translates it into a selected language, and provides key vocabulary for further analysis!
+    """)
 
     # Pre-filled starter text for the input box
     starter_text = "The cherry blossoms bloom as the sun rises, painting the sky with hues of pink and gold."
